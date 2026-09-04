@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "GO标准库/未命名.md",
+                "file": "GO标准库/bufio.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "未命名"
+              "title": "bufio"
             }
           }
         ]
@@ -83,7 +83,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "8d6dc51dfdbb4e74",
@@ -99,7 +99,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "GO标准库/未命名.md",
+                "file": "GO标准库/bufio.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -118,7 +118,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "GO标准库/未命名.md",
+                "file": "GO标准库/bufio.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -161,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "GO标准库/未命名.md",
+                "file": "GO标准库/bufio.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -170,11 +170,12 @@
               "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -187,14 +188,24 @@
       "bases:新建数据库": false
     }
   },
-  "active": "7be9ff65f7dc25da",
+  "active": "ec1a23eef43aa951",
   "lastOpenFiles": [
-    "GO标准库/未命名.md",
+    "GO标准库/bytes.md",
+    "GO标准库/net.md",
+    "GO标准库/io.md",
+    "GO标准库/bufio.md",
+    "[io.md",
+    "GO标准库/strings.md",
+    "GO标准库/os.md",
+    "未命名.base",
+    "附件's Path/Pasted image 20260904212851.png",
+    "附件's Path/Pasted image 20260904212858.png",
+    "Pasted image 20260904212633.png",
+    "附件's Path",
     "GO标准库",
     "#ajhj.md",
     "欢迎.md",
     "未命名 1.base",
-    "未命名 2.base",
-    "未命名.base"
+    "未命名 2.base"
   ]
 }
