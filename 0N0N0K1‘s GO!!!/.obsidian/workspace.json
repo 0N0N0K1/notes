@@ -13,7 +13,35 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "GO标准库/bufio.md",
+                "file": "GO 标准库/bytes.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "bytes"
+            }
+          },
+          {
+            "id": "350f1f0cc831baa5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "GO 标准库/fmt.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "fmt"
+            }
+          },
+          {
+            "id": "152f679dd1de6fcd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "GO 标准库/bufio.md",
                 "mode": "source",
                 "source": false
               },
@@ -21,7 +49,8 @@
               "title": "bufio"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -161,7 +190,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "GO标准库/bufio.md",
+                "file": "GO 标准库/bufio.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -188,21 +217,29 @@
       "bases:新建数据库": false
     }
   },
-  "active": "ec1a23eef43aa951",
+  "active": "7be9ff65f7dc25da",
   "lastOpenFiles": [
-    "GO标准库/bytes.md",
+    "GO 标准库/errors.md",
+    "GO 标准库/bytes.md",
+    "GO 标准库/fmt.md",
+    "GO 标准库/io.md",
+    "GO 标准库/os.md",
+    "GO 标准库/strings.md",
+    "GO 标准库/time.md",
+    "GO 小知识点/byte切片、rune切片、字符串的区别.md",
+    "GO 标准库/bufio.md",
+    "strings包.md",
+    "GO 小知识点",
+    "未命名",
     "GO标准库/net.md",
-    "GO标准库/io.md",
-    "GO标准库/bufio.md",
+    "io..md",
     "[io.md",
-    "GO标准库/strings.md",
-    "GO标准库/os.md",
     "未命名.base",
     "附件's Path/Pasted image 20260904212851.png",
     "附件's Path/Pasted image 20260904212858.png",
     "Pasted image 20260904212633.png",
     "附件's Path",
-    "GO标准库",
+    "GO 标准库",
     "#ajhj.md",
     "欢迎.md",
     "未命名 1.base",

@@ -63,12 +63,36 @@
       "key": "6"
     }
   ],
+  "editor:toggle-highlight": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "ArrowUp"
+    }
+  ],
   "editor:insert-codeblock": [
     {
       "modifiers": [
-        "Alt"
+        "Mod"
       ],
-      "key": "C"
+      "key": "`"
+    }
+  ],
+  "editor:toggle-bold": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "ArrowDown"
+    }
+  ],
+  "editor:clear-formatting": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "ArrowLeft"
     }
   ]
 }

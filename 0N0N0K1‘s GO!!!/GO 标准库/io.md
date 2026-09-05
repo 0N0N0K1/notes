@@ -1,36 +1,38 @@
 # 1. 作用
 
-io 包的本质是 **接口驱动**，==为其他包实现 I/O 操作提供了统一的抽象==。涉及 **文件、网络、缓冲** 等包的操作
+io 包的本质是 **接口驱动**，==为其他包实现 I/O 操作提供了统一的接口，需使用者实现接口==。涉及 **文件、网络、缓冲** 等包的操作
 [[os]]  ： os.File 实现了 io.ReadWriteCloser
-[[net]] ： net.Conn 实现了 io.ReadWriteCloser
+net： net.Conn 实现了 io.ReadWriteCloser
 [[bytes]] ：bytes.Buffer 实现 io.Reader/io.Writer
 [[strings]] ：strings.Reader 实现 io.Reader/io.ReaderAt
 [[bufio]] ：包装 io.Reader/io.Writer 提供缓冲 
+errors : 
+
 
 # 2. 四大核心接口
 
-#### 2.1. **Reader**
+#### 2.1. io.**Reader**
 ```go
 type Reader interface {
     // n为从实现Read方法对象中读入到p中字节数，err 为返回错误类型（其中err==io.EOF为读到文件结束的返回值）
     Read(p []byte) (n int, err error)
 }
 ```
-#### 2.2. **Writer**
+#### 2.2. io.**Writer**
 ```go
 type Writer interface {
     // n为从p写入到实现Read方法对象中字节数，err 为返回错误类型
     Write(p []byte) (n int, err error)
 }
 ```
-#### 2.3. **Closer**
+#### 2.3. **io.Closer**
 ```go
 type Closer interface {
    // 关闭当前资源/连接
     Close() error
 }
 ```
-#### 2.4. **Seeker**
+#### 2.4. io.**Seeker**
 ```go
 type Seeker interface {
     // 用于设置偏移量随机访问
@@ -48,7 +50,7 @@ type Seeker interface {
 | `ReadSeeker`      | `Reader` + `Seeker`            |
 | `ReadWriteSeeker` | `Reader` + `Writer` + `Seeker` |
 # 3.开放函数
-1. copy...
+1. io.copy...
 ```go
 // 将数据从 src 复制到 dst，直到 EOF 或出错。
 func Copy(dst Writer, src Reader) (written int64, err error)
@@ -59,12 +61,12 @@ func CopyBuffer(dst Writer, src Reader, buf []byte) (written int64, err error)
 // 指定复制字节数
 func CopyN(dst Writer, src Reader, n int64) (written int64, err error)
 ```
-2. pipe
+2. io.pipe
 ```go
 //Pipe 创建一个同步的 内存管道。 返回该内存的 io.Reader ，io.Writer 
 func Pipe() (*PipeReader, *PipeWriter)
 ```
-3. Read...
+3. io.Read...
 ```go
 //从源 r 读取数据，直到遇到错误或文件末尾 (EOF) 为止，并返回读取到的数据
 func ReadAll(r Reader) ([]byte, error)
@@ -82,12 +84,12 @@ func ReadAtLeast(r Reader, buf []byte, min int) (n int, err error)
 //如果在读取部分字节后遇到 EOF，ReadFull 函数将返回 ErrUnexpectedEOF
 func ReadFull(r Reader, buf []byte) (n int, err error)
 ```
-4. writestring
+4. io.writestring
 ```go
 //将字符串 s 的内容写入对象 w
 func WriteString(w Writer, s string) (n int, err error)
 ```
-5. TeeRead
+5. io.TeeRead
 ```go
 //TeeReader 返回一个 Reader ，该对象将从 r 读取的内容写入 w。 对 r 执行的读取操作前读取内容先写入 w
 func TeeReader(r Reader, w Writer) Reader
