@@ -1,6 +1,7 @@
 # 1. 作用
 通过 [[SMTP]] 向服务器发送/提交邮件
 Package gomail 提供了一个简单的接口，方便高效地撰写邮件和发送邮件
+
 文档地址： https://pkg.go.dev/gopkg.in/gomail.v2#section-documentation
 
 # 2. 导入

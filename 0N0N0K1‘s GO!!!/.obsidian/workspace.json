@@ -11,10 +11,14 @@
             "id": "1f1ca41b919a69ce",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "GO 三方库/gRPC.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "gRPC"
             }
           }
         ]
@@ -157,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "GO 三方库/gomail-邮件发送.md",
+                "file": "GO 三方库/gRPC.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -184,8 +188,19 @@
       "bases:新建数据库": false
     }
   },
-  "active": "7be9ff65f7dc25da",
+  "active": "1f1ca41b919a69ce",
   "lastOpenFiles": [
+    "附件's Path/Pasted image 20260908221204.png",
+    "应用层协议/RPC.md",
+    "GO 三方库/gRPC.md",
+    "GO 三方库/gomail-邮件发送.md",
+    "GO 小知识点/byte切片、rune切片、字符串的区别.md",
+    "附件's Path/Pasted image 20260908163538.png",
+    "附件's Path/Pasted image 20260908155429.png",
+    "附件's Path/Pasted image 20260908155315.png",
+    "附件's Path/Pasted image 20260908155217.png",
+    "附件's Path/Pasted image 20260908154126.png",
+    "附件's Path/Pasted image 20260908153952.png",
     "应用层协议/邮件传输协议/POP3.md",
     "应用层协议/邮件传输协议/ISMP.md",
     "应用层协议/邮件传输协议/SMTP.md",
@@ -197,18 +212,11 @@
     "GO 标准库/strings.md",
     "GO 标准库/os.md",
     "GO 标准库/time.md",
-    "GO 三方库/gomail-邮件发送.md",
-    "GO 小知识点/byte切片、rune切片、字符串的区别.md",
     "附件's Path/Pasted image 20260907124259.png",
     "应用层协议/邮件传输协议/邮件传输系统概览.md",
     "附件's Path/Pasted image 20260907155945.png",
     "附件's Path/Pasted image 20260907155857.png",
     "附件's Path/Pasted image 20260907155209.png",
-    "附件's Path/Pasted image 20260907141455.png",
-    "附件's Path/Pasted image 20260907141342.png",
-    "附件's Path/Pasted image 20260907141237.png",
-    "附件's Path/Pasted image 20260907124355.png",
-    "附件's Path/Pasted image 20260907124318.png",
     "附件's Path",
     "未命名",
     "应用层协议/邮件传输协议",
@@ -221,7 +229,6 @@
     "io..md",
     "[io.md",
     "未命名.base",
-    "附件's Path/Pasted image 20260904212851.png",
     "GO 标准库",
     "#ajhj.md",
     "欢迎.md",
