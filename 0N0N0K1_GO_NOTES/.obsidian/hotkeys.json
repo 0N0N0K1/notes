@@ -71,14 +71,6 @@
       "key": "ArrowUp"
     }
   ],
-  "editor:insert-codeblock": [
-    {
-      "modifiers": [
-        "Mod"
-      ],
-      "key": "`"
-    }
-  ],
   "editor:toggle-bold": [
     {
       "modifiers": [
@@ -87,7 +79,15 @@
       "key": "ArrowDown"
     }
   ],
-  "editor:clear-formatting": [
+  "editor:toggle-code": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "ArrowRight"
+    }
+  ],
+  "editor:insert-codeblock": [
     {
       "modifiers": [
         "Mod"

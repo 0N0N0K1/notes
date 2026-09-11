@@ -904,15 +904,151 @@ func main() {
 }
 ```
 
-## 5.2 基于JWT的认证
+## 5.2 基于拦截器的JWT认证
 ==由于JWT未加密约等于裸奔，所以这一步必需建立在TSL加密信道基础上==
 
 
+通过拦截器（Interceptor）在 RPC 调用前（客户端发送前）后（服务端收到后）处理认证逻辑。
+客户端将 JWT 放入 gRPC 的 metadata (元数据) 中发送
+服务端从 metadata 中提取并验证 JWT，验证通过后将token中用户信息存入 context 供后续业务使用
 
-通过拦截器（Interceptor）在 RPC 调用前后处理认证逻。客户端将 JWT 放入 gRPC 的 metadata (元数据) 中发送，服务端从 metadata 中提取并验证 JWT，验证通过后将用户信息存入 context 供后续业务逻辑使用。
+### 5.2.1 示例
+以一元为例，流式拦截器同理
+==服务端==
+```go
+func JWTInterceptor(ctx context.Context, req any, info *grpc.UnaryServerInfo, handler grpc.UnaryHandler) (resp any, err error) {  
+    // 从 metadata 中获取 token    
+    md, ok := metadata.FromIncomingContext(ctx)  
+    if !ok {  
+       return nil, status.Errorf(codes.Unauthenticated, "missing metadata")  
+    }  
+    authHeader, ok := md["authorization"]  
+    if !ok || len(authHeader) == 0 {  
+       return nil, status.Errorf(codes.Unauthenticated, "missing authorization token")  
+    }  
+    // 解析并验证 JWT    
+    claims, err := ParseToken(tokenStr)  
+    if err != nil {  
+       return nil, status.Errorf(codes.Unauthenticated, "invalid token: %v", err)  
+    }  
+    // 将用户信息注入 context    
+    ctx = context.WithValue(ctx, "user_id", claims.UserID)  
+    ctx = context.WithValue(ctx, "username", claims.Username)  
+    // 继续处理请求  
+    return handler(ctx, req)  
+}
+func main() {  
+    ls, _ := net.Listen("tcp", "127.0.0.1:7979")  
+    
+    // 注册一元拦截器
+    server := grpc.NewServer(grpc.UnaryInterceptor(JWTInterceptor))  
+    test.RegisterTestServer(server, &testserver{})  
+    err := server.Serve(ls)  
+    if err != nil {  
+       return  
+    }  
+  
+}
+```
 
+==客户端==
+```go
 
-> [!fail]   想通过context既传递token，又传递超时消息是错误的
+// 客户端用闭包包装一层以传入参数
+func ClientJWTInterceptor(token string) grpc.UnaryClientInterceptor {  
+    return func(ctx context.Context, method string, req, reply interface{}, cc *grpc.ClientConn, invoker grpc.UnaryInvoker, opts ...grpc.CallOption) error {  
+       // 将 token 附加到 outgoing metadata       
+       ctx = metadata.AppendToOutgoingContext(ctx, "authorization", "Bearer "+token)  
+       // 调用实际的invoke开始连接  
+       return invoker(ctx, method, req, reply, cc, opts...)  
+    }  
+}  
+
+func main() {  
+    conn, err := grpc.NewClient("127.0.0.1:7979",  
+       grpc.WithTransportCredentials(insecure.NewCredentials()), 
+       // 注册一元拦截器 
+       grpc.WithUnaryInterceptor(ClientJWTInterceptor("kissshot")),  
+    )  
+    if err != nil {  
+       log.Fatal(err)  
+    }  
+    defer conn.Close()  
+    client = test.NewTestClient(conn)  
+    // 一元调用
+    onlyOnce()  
+  }
+```
+
+> [!fail]   想通过叠层为一个context既传递token，又传递超时消息是错误的
 >    1. context只在本进程中建立父子关系以 .Value 方法向上寻值
 >    2. grpc 没有定义如何传输这类关系
 >    3. 其他语言不一定支持context
+
+### 5.2.2 拦截器格式
+==客户端==
+```go
+// 注册的DialOption
+ grpc.WithUnaryInterceptor(your_func_1())
+ grpc.WithStreamInterceptor(your_func_2())
+ 
+// 一元拦截器 your_func_1 **闭包返回**
+type UnaryClientInterceptor func(ctx context.Context, method string, req any, reply any, cc *ClientConn, invoker UnaryInvoker, opts ...CallOption) error
+// 流式拦截器 your_func_2 **闭包返回**
+type StreamClientInterceptor func(ctx context.Context, desc *StreamDesc, cc *ClientConn, method string, streamer Streamer, opts ...CallOption) (ClientStream, error)
+```
+
+==服务端==
+```go
+// 注册.ServerOption
+grpc.UnaryInterceptor(your_func_1) 
+grpc.StreamInterceptor(your_func_2)
+
+//一元拦截器 your_func_1 **应为**
+type UnaryServerInterceptor func(ctx context.Context, req any, info *UnaryServerInfo, handler UnaryHandler) (resp any, err error)
+//一元拦截器 your_func_2 **应为**
+type StreamServerInterceptor func(srv any, ss ServerStream, info *StreamServerInfo, handler StreamHandler) error
+```
+## 5.3 服务端状态码返回
+
+服务端用status.Errorf构造错误返回  状态码  +   描述
+```go
+return nil, status.Errorf(codes.Unauthenticated, "invalid token: %v", err)
+```
+
+客户端收到如下,可以通过status.FromError拿到err中状态码进行不同错误的处理
+```go
+// 2026/09/09 09:25:44 rpc error: code = Unauthenticated desc = invalid token: <nil>
+
+if status, ok := status.FromError(err); ok {
+            if status.Code() == codes.DeadlineExceeded {
+                log.Println("This is a timeout error (DeadlineExceeded)")
+            }
+        }
+
+```
+
+| 状态码                 | 标识符 | 描述                           |
+| ------------------- | --- | ---------------------------- |
+| OK                  | 0   | 非错误；成功时返回                    |
+| CANCELLED           | 1   | 操作已取消，通常由调用者取消               |
+| UNKNOWN             | 2   | 未知错误。                        |
+| INVALID_ARGUMENT    | 3   | 客户端指定了无效参数                   |
+| DEADLINE_EXCEEDED   | 4   | 截止时间在操作完成之前过期                |
+| NOT_FOUND           | 5   | 找不到某些请求的实体（例如文件或目录）          |
+| ALREADY_EXISTS      | 6   | 客户端试图创建的实体（例如文件或目录）已存在。      |
+| PERMISSION_DENIED   | 7   | 调用者没有执行指定操作的权限               |
+| RESOURCE_EXHAUSTED  | 8   | 某些资源已耗尽，可能是用户配额，或者整个文件系统空间不足 |
+| FAILED_PRECONDITION | 9   | 操作被拒绝，因为系统处于执行该操作所需的状态之外     |
+| ABORTED             | 10  | 操作被中止，通常是由于并发问题              |
+| OUT_OF_RANGE        | 11  | 操作尝试超出了有效范围                  |
+| UNIMPLEMENTED       | 12  | 此服务中未实现、不支持或未启用该操作           |
+| INTERNAL            | 13  | 内部错误。这意味着底层系统预期的某些不变量已被破坏    |
+| UNAVAILABLE         | 14  | 服务当前不可用                      |
+| DATA_LOSS           | 15  | 不可恢复的数据丢失或损坏                 |
+| UNAUTHENTICATED     | 16  | 请求没有用于该操作的有效身份验证凭据           |
+
+
+## 5.3 保活与健康检测
+## 5.4 负载均衡
+## 5.5 流量控制
