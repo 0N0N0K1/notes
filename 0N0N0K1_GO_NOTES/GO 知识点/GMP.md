@@ -1,4 +1,3 @@
-
 屏蔽线程，并发以协程为粒度，实现M:N调度
 
 | 特性       | OS 线程（1:1 模型） | GMP 模型（M:N 模型）    |
@@ -39,7 +38,7 @@ parentGoid / gopc / startpc	uint64/uintptr	//父 G ID、go 语句的 PC、G 入�
 }
 ```
 
-
+gcAssistBytes	int64	//[[GC]] 辅助信用。为正时可无惩罚分配；为负时必须做扫描工作还债
 ## 1.2 M — Machine（线程的封装）
 
 |        |               说明                |
@@ -171,13 +170,13 @@ Go 调度器不是基于时间片轮转的，而是==事件驱动 + 协作式 + 
 
 设置 stackguard0 = stackPreempt，请求当前 G 在==下一次函数调用时让渡==：
 
-| 触发源                  | 入口                                                                                                           | 原因                 | 操作                                                                                                                                                      |
-| -------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **[[sysmon ]]时间片检测** | sysmon() → retake() → preemptone() 设置 stackguard0 = stackPreempt → 下次函数调用触发 morestack() → mcall(largerstack) | G 连续运行超过 **10ms**  | ① 检查 stackguard0 == stackPreempt<br>② 状态 _Grunning → _Grunnable<br>③ stackguard0 重置为正常值<br>④ runqput(pp, gp, true) 放入**本地 runnext**<br>⑤ schedule()找新 G |
-| **GC STW**           | stopTheWorld() → preemptStop = true + preemptone() → morestack() → mcall(preemptPark)                        | GC 需要全局暂停做标记       | ① 状态 _Grunning → _Gpreempted<br>② dropg()挂到 STW 等待列表<br>③ 阻塞直到 GC 结束被唤醒                                                                                 |
-| **GC 标记辅助**          | gcAssistAlloc() 分配时发现 gcAssistBytes < 0 → 还债后可能 gopark                                                       | 分配速度超过 GC 标记速度，需还债 | ① 执行 gcDrain() 帮 GC 扫描<br>② 债务还清后返回，或让渡                                                                                                                 |
-| **栈收缩**              | preemptShrink = true → 函数调用触发 morestack() → shrinkstack()                                                    | 栈使用率低，回收内存         | ① 拷贝栈到更小内存块<br>② 继续执行原 G                                                                                                                                |
-| **栈扩容**              | morestack() → mcall(newstack)                                                                                | 栈空间不足（真实溢出，非抢占）    | ① 分配 2 倍新栈<br>② 拷贝旧栈数据<br>③ 调整指针<br>④ 切回继续执行                                                                                                            |
+| 触发源                     | 入口                                                                                                           | 原因                 | 操作                                                                                                                                                      |
+| ----------------------- | ------------------------------------------------------------------------------------------------------------ | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **[[sysmon ]]时间片检测**    | sysmon() → retake() → preemptone() 设置 stackguard0 = stackPreempt → 下次函数调用触发 morestack() → mcall(largerstack) | G 连续运行超过 **10ms**  | ① 检查 stackguard0 == stackPreempt<br>② 状态 _Grunning → _Grunnable<br>③ stackguard0 重置为正常值<br>④ runqput(pp, gp, true) 放入**本地 runnext**<br>⑤ schedule()找新 G |
+| **[[GC#1.3 并发协作]] STW** | stopTheWorld() → preemptStop = true + preemptone() → morestack() → mcall(preemptPark)                        | GC 需要全局暂停做标记       | ① 状态 _Grunning → _Gpreempted<br>② dropg()挂到 STW 等待列表<br>③ 阻塞直到 GC 结束被唤醒                                                                                 |
+| **[[GC]] 标记辅助**         | gcAssistAlloc() 分配时发现 gcAssistBytes < 0 → 还债后可能 gopark                                                       | 分配速度超过 GC 标记速度，需还债 | ① 执行 gcDrain() 帮 GC 扫描<br>② 债务还清后返回，或让渡                                                                                                                 |
+| **栈收缩**                 | preemptShrink = true → 函数调用触发 morestack() → shrinkstack()                                                    | 栈使用率低，回收内存         | ① 拷贝栈到更小内存块<br>② 继续执行原 G                                                                                                                                |
+| **栈扩容**                 | morestack() → mcall(newstack)                                                                                | 栈空间不足（真实溢出，非抢占）    | ① 分配 2 倍新栈<br>② 拷贝旧栈数据<br>③ 调整指针<br>④ 切回继续执行                                                                                                            |
 
 ### 2.3.3 抢占式让渡
 

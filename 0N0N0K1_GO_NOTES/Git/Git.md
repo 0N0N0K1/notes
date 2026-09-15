@@ -55,29 +55,27 @@ feature:               D' --- E'*
 
 # 5. 远程操作
 ![[Pasted image 20260915122921.png]]
+
 ```
 # 查看远程
 git remote -v                         # 查看远程仓库地址
 git remote show origin                # 查看 origin 详细信息
 
 # 添加 / 修改 / 删除远程
-git remote add origin <url>           # 添加远程仓库
-git remote rename origin upstream     # 重命名远程
-git remote remove origin              # 删除远程
+git remote add <name> <url>           # 添加远程仓库
+git remote rename <oldname> <newname> # 重命名远程
+git remote remove <name>              # 删除远程
 
 # 抓取更新，不合并
-git fetch origin                      # 抓取 origin 更新
-git fetch origin main                 # 抓取指定分支
+git fetch <remotename>                    # 抓取 origin 更新
+git fetch <remotename> <remotebranch>     # 抓取指定分支
 
 # 拉取并合并
-git pull origin main                  # fetch + merge
-git pull --rebase origin main         # fetch + rebase
+git pull <remotename> <remotebranch>                 # fetch + merge
+git pull --rebase <remotename> <remotebranch>        # fetch + rebase
 
 # 推送
-git push origin local:remote          # 本地 local 分支推送到远程 remote
+git push <remotename>  <localBranch>:<remoteBranch>   # 本地分支推送到远程分支
 git push --all origin                 # 推送所有本地分支
-git push origin --tags                # 推送所有标签
-git push origin v1.0                  # 推送指定标签
-git push origin --delete tag v1.0     # 删除远程标签
 
 ```
