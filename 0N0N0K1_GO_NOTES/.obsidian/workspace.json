@@ -8,31 +8,17 @@
         "type": "tabs",
         "children": [
           {
-            "id": "00d372c2f64bca8e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "GO 知识点/GC.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "GC"
-            }
-          },
-          {
             "id": "21518cc5c2843808",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "GO 知识点/GMP.md",
+                "file": "Z暂未分类/主键ID.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "GMP"
+              "title": "主键ID"
             }
           }
         ]
@@ -69,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#2：标记终止（Mark",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,8 +79,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -176,7 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "GO 知识点/GC.md",
+                "file": "Z暂未分类/主键ID.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -203,18 +188,27 @@
       "bases:新建数据库": false
     }
   },
-  "active": "fd8fcd3cda56d7b9",
+  "active": "21518cc5c2843808",
   "lastOpenFiles": [
+    "Git/Git.md",
+    "Z暂未分类/主键ID.md",
+    "Z暂未分类",
+    "GO 三方库/gRPC.md",
+    "SQL",
+    "GO 三方库/gomail.md",
     "GO 知识点/sysmon.md",
-    "GO 知识点/GC.md",
+    "RabbitMQ/理论.md",
+    "RabbitMQ/GO实践.md",
+    "RabbitMQ/运维.md",
     "GO 知识点/GMP.md",
+    "GO 三方库/未命名.md",
+    "GO 知识点/GC.md",
     "GO 知识点/内存分配.md",
     "GO 知识点/堆栈.md",
     "GO 知识点/逃逸.md",
     "附件's Path/Pasted image 20260915140955.png",
     "GO 知识点/闭包.md",
     "GO 知识点/byte切片、rune切片、字符串的区别.md",
-    "Git/Git.md",
     "附件's Path/Pasted image 20260915122921.png",
     "附件's Path/Pasted image 20260915093633.png",
     "附件's Path/Pasted image 20260914223430.png",
@@ -232,23 +226,14 @@
     "GO 小知识点/闭包.md",
     "GO 小知识点/堆栈.md",
     "GO 小知识点/byte切片、rune切片、字符串的区别.md",
-    "RabbitMQ/GO实践.md",
-    "RabbitMQ/理论.md",
     "应用层协议/RPC.md",
     "应用层协议/AMQP.md",
-    "GO 三方库/gomail.md",
-    "RabbitMQ/运维.md",
-    "GO 三方库/gRPC.md",
     "RabbitMQ",
     "应用层协议/邮件传输协议/POP3.md",
-    "应用层协议/邮件传输协议/ISMP.md",
-    "应用层协议/邮件传输协议/SMTP.md",
     "附件's Path",
     "应用层协议/邮件传输协议",
     "未命名 1",
     "应用层协议",
-    "GO 三方库",
-    "GO 小知识点",
-    "未命名.base"
+    "GO 三方库"
   ]
 }
