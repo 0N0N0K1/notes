@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "91b691b404d27504",
+        "id": "b12ee285a873c08d",
         "type": "tabs",
         "children": [
           {
-            "id": "21518cc5c2843808",
+            "id": "6bf28039a4df6ae5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Z暂未分类/主键ID.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "主键ID"
+              "title": "新标签页"
             }
           }
         ]
@@ -83,7 +79,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 244.0726089477539
   },
   "right": {
     "id": "8d6dc51dfdbb4e74",
@@ -161,7 +157,6 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Z暂未分类/主键ID.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -188,32 +183,42 @@
       "bases:新建数据库": false
     }
   },
-  "active": "21518cc5c2843808",
+  "active": "6bf28039a4df6ae5",
   "lastOpenFiles": [
-    "Git/Git.md",
-    "Z暂未分类/主键ID.md",
-    "Z暂未分类",
-    "GO 三方库/gRPC.md",
-    "SQL",
-    "GO 三方库/gomail.md",
-    "GO 知识点/sysmon.md",
-    "RabbitMQ/理论.md",
-    "RabbitMQ/GO实践.md",
-    "RabbitMQ/运维.md",
-    "GO 知识点/GMP.md",
-    "GO 三方库/未命名.md",
+    "GORM/22. clause 子句.md",
+    "GORM/17. Hint 提示.md",
+    "GORM/20. 错误处理.md",
+    "GORM/21. 关联及预加载.md",
+    "GORM/19. 方法链.md",
+    "GORM/2. 连接及配置.md",
+    "GORM/0. GORM默认行为.md",
+    "GORM/1. sql安全.md",
+    "GORM/3. 模型及标签.md",
+    "GORM/18. index 索引.md",
+    "GORM/8. 删除.md",
+    "GORM/16. 序列化器.md",
+    "GORM/14. Scopes 作用域.md",
+    "GORM/10. context 上下文.md",
+    "GORM/7. 查询.md",
+    "GORM/15. set & get.md",
+    "GORM/13. 性能.md",
+    "GORM/5. 迁移.md",
+    "GORM/12. 事务.md",
+    "GORM/11. Hook 钩子函数.md",
+    "GORM/6.创建（插入）.md",
+    "GORM/9. 更新.md",
+    "GORM/4. 模型间关系.md",
     "GO 知识点/GC.md",
-    "GO 知识点/内存分配.md",
-    "GO 知识点/堆栈.md",
-    "GO 知识点/逃逸.md",
+    "GO 知识点/sysmon.md",
+    "GO 知识点/GMP.md",
+    "GORM",
+    "Z暂未分类",
+    "SQL",
     "附件's Path/Pasted image 20260915140955.png",
-    "GO 知识点/闭包.md",
-    "GO 知识点/byte切片、rune切片、字符串的区别.md",
     "附件's Path/Pasted image 20260915122921.png",
     "附件's Path/Pasted image 20260915093633.png",
     "附件's Path/Pasted image 20260914223430.png",
     "附件's Path/Pasted image 20260914215935.png",
-    "栈堆.md",
     "附件's Path/Pasted image 20260914173954.png",
     "附件's Path/Pasted image 20260914173558.png",
     "附件's Path/Pasted image 20260914172540.png",
@@ -221,19 +226,10 @@
     "附件's Path/Pasted image 20260914165704.png",
     "Docker",
     "Git",
-    "GO 小知识点/逃逸.md",
-    "S1-2024010925025-吴世得.md",
-    "GO 小知识点/闭包.md",
-    "GO 小知识点/堆栈.md",
-    "GO 小知识点/byte切片、rune切片、字符串的区别.md",
-    "应用层协议/RPC.md",
-    "应用层协议/AMQP.md",
     "RabbitMQ",
-    "应用层协议/邮件传输协议/POP3.md",
     "附件's Path",
     "应用层协议/邮件传输协议",
     "未命名 1",
-    "应用层协议",
-    "GO 三方库"
+    "应用层协议"
   ]
 }
