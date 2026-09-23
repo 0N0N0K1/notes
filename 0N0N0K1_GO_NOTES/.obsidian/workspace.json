@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "b12ee285a873c08d",
+        "id": "e5703ca5c004e751",
         "type": "tabs",
         "children": [
           {
-            "id": "6bf28039a4df6ae5",
+            "id": "34d68d3f50374e2f",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Docker.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "新标签页"
+              "title": "Docker"
             }
           }
         ]
@@ -157,6 +161,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "Docker.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
@@ -183,53 +188,53 @@
       "bases:新建数据库": false
     }
   },
-  "active": "6bf28039a4df6ae5",
+  "active": "34d68d3f50374e2f",
   "lastOpenFiles": [
-    "GORM/22. clause 子句.md",
-    "GORM/17. Hint 提示.md",
-    "GORM/20. 错误处理.md",
-    "GORM/21. 关联及预加载.md",
-    "GORM/19. 方法链.md",
-    "GORM/2. 连接及配置.md",
-    "GORM/0. GORM默认行为.md",
-    "GORM/1. sql安全.md",
-    "GORM/3. 模型及标签.md",
-    "GORM/18. index 索引.md",
-    "GORM/8. 删除.md",
-    "GORM/16. 序列化器.md",
-    "GORM/14. Scopes 作用域.md",
-    "GORM/10. context 上下文.md",
-    "GORM/7. 查询.md",
-    "GORM/15. set & get.md",
-    "GORM/13. 性能.md",
-    "GORM/5. 迁移.md",
-    "GORM/12. 事务.md",
-    "GORM/11. Hook 钩子函数.md",
-    "GORM/6.创建（插入）.md",
-    "GORM/9. 更新.md",
-    "GORM/4. 模型间关系.md",
+    "DB-SQL-GORM/sql库+mysql驱动.md",
+    "Docker.md",
+    "DB-SQL-GORM/主键ID选择.md",
+    "DB-SQL-GORM/PosygreSQL/5. 执行计划 explain.md",
+    "DB-SQL-GORM/MySQL/4. 储存引擎 InnoDB.md",
+    "DB-SQL-GORM/PosygreSQL/4. 储存引擎 Heap.md",
+    "DB-SQL-GORM/MySQL/3. 索引 index.md",
+    "DB-SQL-GORM/PosygreSQL/3. 索引 index.md",
+    "DB-SQL-GORM/MySQL/2. 约束 constraint.md",
+    "DB-SQL-GORM/MySQL/1. 数据类型 type.md",
+    "DB-SQL-GORM/PosygreSQL/2. 约束 constraint.md",
+    "DB-SQL-GORM/PosygreSQL/1. 数据类型 pg_type.md",
+    "附件/Pasted image 20260923224044.png",
+    "附件/Pasted image 20260923203806.png",
+    "附件/Pasted image 20260923203800.png",
+    "附件/Pasted image 20260923202928.png",
+    "附件/Pasted image 20260923200704.png",
+    "附件/Pasted image 20260923154211.png",
+    "附件/Pasted image 20260923151108.png",
+    "附件/Pasted image 20260923151015.png",
+    "附件/Pasted image 20260923143040.png",
+    "Git/Git.md",
+    "DB-SQL-GORM/MySQL",
+    "附件/Pasted image 20260921103622.png",
+    "DB-SQL-GORM/go-sql-drive の MySQL 驱动.md",
+    "GO 标准库/fmt.md",
+    "GO 知识点/闭包.md",
+    "GO 知识点/堆栈.md",
+    "GO 知识点/内存分配.md",
+    "GO 知识点/逃逸.md",
     "GO 知识点/GC.md",
-    "GO 知识点/sysmon.md",
     "GO 知识点/GMP.md",
-    "GORM",
+    "GO 知识点/sysmon.md",
+    "GO 知识点/byte切片、rune切片、字符串的区别.md",
+    "GO 标准库/errors.md",
+    "DB-SQL-GORM",
+    "DB-SQL-GORM/GORM 使用/7. 查询.md",
+    "DB-SQL-GORM/GORM 使用/2. 连接及配置.md",
+    "DB-SQL-GORM/GORM 使用",
     "Z暂未分类",
     "SQL",
-    "附件's Path/Pasted image 20260915140955.png",
-    "附件's Path/Pasted image 20260915122921.png",
-    "附件's Path/Pasted image 20260915093633.png",
-    "附件's Path/Pasted image 20260914223430.png",
-    "附件's Path/Pasted image 20260914215935.png",
-    "附件's Path/Pasted image 20260914173954.png",
-    "附件's Path/Pasted image 20260914173558.png",
-    "附件's Path/Pasted image 20260914172540.png",
-    "附件's Path/Pasted image 20260914172441.png",
-    "附件's Path/Pasted image 20260914165704.png",
     "Docker",
     "Git",
     "RabbitMQ",
-    "附件's Path",
-    "应用层协议/邮件传输协议",
-    "未命名 1",
-    "应用层协议"
+    "附件",
+    "应用层协议/邮件传输协议"
   ]
 }
